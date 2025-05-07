@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <template id="product_label_extension_dymo" inherit_id="product.report_producttemplatelabel_dymo">
+    <template id="product_label_extension_dymo" inherit_id="product.report_productlabel_dymo">
         <xpath expr="//div[@class='o_label_data']" position="replace">
             <div class="o_label_data" style="width: 58mm; height: 32mm; padding: 2mm; font-size: 8px; display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 4mm;">
                 <!-- Columna izquierda: imágenes -->
