@@ -1,51 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <template id="product_label_extension" inherit_id="product.report_simple_label2x7">
-        <xpath expr="//t[@t-set='barcode_size']" position="attributes">
-            <attribute name="t-value">'width:50mm;height:14mm'</attribute>
-        </xpath>
-        <xpath expr="//t[@t-set='table_style']" position="attributes">
-            <attribute name="t-value">'width:57mm;height:32mm;' + table_style</attribute>
-        </xpath>
+    <template id="product_label_extension_dymo" inherit_id="product.report_productlabel_dymo">
         <xpath expr="//div[@class='o_label_data']" position="replace">
-            <div class="o_label_data">
-                <div class="text-center o_label_left_column" style="margin-bottom:7px">
-                    <div class="o_label_images" style="display: flex; flex-direction: column; gap: 7px;">
-                        <div class="o_label_image" style="width: 7mm; height: 5mm; text-align: center; line-height: 5mm;">
-                            <img src="https://raw.githubusercontent.com/AdminDeglia/odoo_product_dimensions_with_product_label/ef2acd906621a4561225df0dd1d235682ca15023/Symbol_Resin_Code_4.svg" alt="Product Image1" style="height: 4em;"/>
-                        </div>
-                        <div class="o_label_image" style="width: 7mm; height: 5mm; text-align: center; line-height: 5mm;">
-                            <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/images.jpg?raw=true" alt="Product Image2" style="height: 4em;"/>
-                        </div>
-                        <div class="o_label_image" style="width: 7mm; height: 5mm; text-align: center; line-height: 5mm; margin-top: 2px">
-                            <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/icone-de-recyclage-et-de-durabilite-noir.png?raw=true" alt="Product Image3" style="height: 4em;"/>
-                        </div>
-                    </div>
-                    <div class="text-start o_label_small_barcode" style="margin-top:15px">
-                        <t t-if="barcode">
-                            <div t-out="barcode" style="padding:0" t-options="{'widget': 'barcode', 'quiet': 0, 'symbology': 'auto', 'img_style': barcode_size}"/>
-                            <div class="o_label_name" style="height:1.7em;background-color: transparent;">
-                                <span t-out="barcode"/>
-                            </div>
-                        </t>
-                    </div>
-                    </div>
+            <div class="o_label_data" style="width: 58mm; height: 32mm; padding: 2mm; font-size: 8px; display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 4mm;">
+                <!-- Columna izquierda: imágenes -->
+                <div style="display: flex; flex-direction: column; gap: 1mm; width: 14mm;">
+                    <img src="https://raw.githubusercontent.com/AdminDeglia/odoo_product_dimensions_with_product_label/ef2acd906621a4561225df0dd1d235682ca15023/Symbol_Resin_Code_4.svg" alt="Image1" style="width: 14mm; height: auto;"/>
+                    <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/images.jpg?raw=true" alt="Image2" style="width: 14mm; height: auto;"/>
+                    <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/icone-de-recyclage-et-de-durabilite-noir.png?raw=true" alt="Image3" style="width: 14mm; height: auto;"/>
                 </div>
-                <div class="text-center o_label_right_column">
-                    <t t-set="lot_producing" t-value="production_data.get(product.id)"/>
-                    <t t-if="lot_producing"/>
-                    <div class="o_label_qr" style="width: 25mm; height: 15mm; background: white; border: 1px solid black; margin-bottom:15px; margin-top:2px">
-                        <div>N° Lote: <t t-esc="lot_producing"/></div>
-                        <div>Largo: <t t-esc="product.product_length"/></div>
-                        <div>Ancho: <t t-esc="product.product_width"/></div>
-                        <div>Alto: <t t-esc="product.product_height"/></div>
-                        <div>Volumen: <t t-esc="product.product_length * product.product_width * product.product_height"/></div>
-                    </div>
+
+                <!-- Centro: datos del producto -->
+                <div style="flex: 1;">
+                    <div><strong><t t-esc="product.display_name"/></strong></div>
+                    <div>Lote: <t t-esc="production_data.get(product.id)"/></div>
+                    <div>Dim: <t t-esc="product.product_length"/>×<t t-esc="product.product_width"/>×<t t-esc="product.product_height"/></div>
                 </div>
-                <div class="text-end" style="line-height:normal;">
-                   <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/Logo_valenciana.png?raw=true" alt="Logo Valenciana" style="width: 10mm; height: 10mm;"/>
+
+                <!-- Derecha: código de barras y logo -->
+                <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 1mm; width: 28mm;">
+                    <t t-if="barcode">
+                        <div t-out="barcode" 
+                            t-options="{'widget': 'barcode', 'quiet': 0, 'symbology': 'auto', 'img_style': 'width:15mm;height:10mm'}"></div>
+                    </t>
+                    <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/Logo_valenciana.png?raw=true" alt="Logo Valenciana" style="width: 12mm; height: 12mm;"/>
                 </div>
+            </div>
         </xpath>
     </template>
 </odoo>
-
