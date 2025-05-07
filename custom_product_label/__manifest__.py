@@ -1,5 +1,5 @@
 {
-    'name': 'Etiquetas de producto personalizadas',
+    'name': 'Etiquetas de producto personalizadas tipo Dymo',
     'version': '1.0',
     'summary': 'Modifica la vista de etiquetas de productos',
     'author': 'Deglia',
