@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <template id="product_label_extension_dymo" inherit_id="product.report_productlabel_dymo">
-        <xpath expr="//div[@class='o_label_data']" position="replace">
-            <div class="o_label_data" style="width: 58mm; height: 32mm; padding: 2mm; font-size: 8px; display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 4mm;">
+    <template id="product_label_extension_dymo" inherit_id="product.report_simple_label_dymo">
+        <xpath expr="//div[@class='o_label_full']" position="replace">
+            <div class="o_label_full" style="width: 58mm; height: 32mm; padding: 2mm; font-size: 8px; display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 4mm;">
                 <!-- Columna izquierda: imágenes -->
                 <div style="display: flex; flex-direction: column; gap: 1mm; width: 14mm;">
                     <img src="https://raw.githubusercontent.com/AdminDeglia/odoo_product_dimensions_with_product_label/ef2acd906621a4561225df0dd1d235682ca15023/Symbol_Resin_Code_4.svg" alt="Image1" style="width: 14mm; height: auto;"/>
