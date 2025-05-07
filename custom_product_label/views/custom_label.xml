@@ -1,31 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<odoo>
-    <template id="product_label_extension_dymo" inherit_id="product.report_productlabel_dymo">
-        <xpath expr="//div[@class='o_label_data']" position="replace">
-            <div class="o_label_data" style="width: 58mm; height: 32mm; padding: 2mm; font-size: 8px; display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 4mm;">
-                <!-- Columna izquierda: imágenes -->
-                <div style="display: flex; flex-direction: column; gap: 1mm; width: 14mm;">
-                    <img src="https://raw.githubusercontent.com/AdminDeglia/odoo_product_dimensions_with_product_label/ef2acd906621a4561225df0dd1d235682ca15023/Symbol_Resin_Code_4.svg" alt="Image1" style="width: 14mm; height: auto;"/>
-                    <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/images.jpg?raw=true" alt="Image2" style="width: 14mm; height: auto;"/>
-                    <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/icone-de-recyclage-et-de-durabilite-noir.png?raw=true" alt="Image3" style="width: 14mm; height: auto;"/>
-                </div>
+<xpath expr="//div[@class='o_label_full']" position="replace">
+    <div class="o_label_full" style="width: 58mm; height: 32mm; padding: 2mm; font-size: 8px; display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 4mm;">
+        <!-- Columna izquierda: imágenes -->
+        <div style="display: flex; flex-direction: column; gap: 1mm; width: 14mm;">
+            <img src="https://raw.githubusercontent.com/AdminDeglia/odoo_product_dimensions_with_product_label/ef2acd906621a4561225df0dd1d235682ca15023/Symbol_Resin_Code_4.svg" alt="Image1" style="width: 14mm; height: auto;"/>
+            <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/images.jpg?raw=true" alt="Image2" style="width: 14mm; height: auto;"/>
+            <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/icone-de-recyclage-et-de-durabilite-noir.png?raw=true" alt="Image3" style="width: 14mm; height: auto;"/>
+        </div>
 
-                <!-- Centro: datos del producto -->
-                <div style="flex: 1;">
-                    <div><strong><t t-esc="product.display_name"/></strong></div>
-                    <div>Lote: <t t-esc="production_data.get(product.id)"/></div>
-                    <div>Dim: <t t-esc="product.product_length"/>×<t t-esc="product.product_width"/>×<t t-esc="product.product_height"/></div>
-                </div>
+        <!-- Centro: datos del producto -->
+        <div style="flex: 1;">
+            <div><strong><t t-esc="product.display_name"/></strong></div>
+            <div>Lote: <t t-esc="production_data.get(product.id)"/></div>
+            <div>Dim: <t t-esc="product.product_length"/>×<t t-esc="product.product_width"/>×<t t-esc="product.product_height"/></div>
+        </div>
 
-                <!-- Derecha: código de barras y logo -->
-                <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 1mm; width: 28mm;">
-                    <t t-if="barcode">
-                        <div t-out="barcode" 
-                            t-options="{'widget': 'barcode', 'quiet': 0, 'symbology': 'auto', 'img_style': 'width:15mm;height:10mm'}"></div>
-                    </t>
-                    <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/Logo_valenciana.png?raw=true" alt="Logo Valenciana" style="width: 12mm; height: 12mm;"/>
-                </div>
-            </div>
-        </xpath>
-    </template>
-</odoo>
+        <!-- Derecha: código de barras y logo -->
+        <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 1mm; width: 28mm;">
+            <t t-if="barcode">
+                <div t-out="barcode" 
+                    t-options="{'widget': 'barcode', 'quiet': 0, 'symbology': 'auto', 'img_style': 'width:15mm;height:10mm'}"></div>
+            </t>
+            <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/Logo_valenciana.png?raw=true" alt="Logo Valenciana" style="width: 12mm; height: 12mm;"/>
+        </div>
+    </div>
+</xpath>
+
