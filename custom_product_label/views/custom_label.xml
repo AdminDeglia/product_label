@@ -1,27 +1,40 @@
-<xpath expr="//div[@class='o_label_full']" position="replace">
-    <div class="o_label_full" style="width: 58mm; height: 32mm; padding: 2mm; font-size: 8px; display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 4mm;">
-        <!-- Columna izquierda: imágenes -->
-        <div style="display: flex; flex-direction: column; gap: 1mm; width: 14mm;">
-            <img src="https://raw.githubusercontent.com/AdminDeglia/odoo_product_dimensions_with_product_label/ef2acd906621a4561225df0dd1d235682ca15023/Symbol_Resin_Code_4.svg" alt="Image1" style="width: 14mm; height: auto;"/>
-            <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/images.jpg?raw=true" alt="Image2" style="width: 14mm; height: auto;"/>
-            <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/icone-de-recyclage-et-de-durabilite-noir.png?raw=true" alt="Image3" style="width: 14mm; height: auto;"/>
-        </div>
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="product_label_extension" inherit_id="product.report_simple_label2x7">
+        <!-- Ajusta el tamaño del código de barras -->
+        <xpath expr="//t[@t-set='barcode_size']" position="attributes">
+            <attribute name="t-value">'width:50mm;height:10mm'</attribute>
+        </xpath>
+        <!-- Ajusta el tamaño de la tabla para una sola etiqueta por página -->
+        <xpath expr="//t[@t-set='table_style']" position="attributes">
+            <attribute name="t-value">'width:57mm;height:30mm;' + table_style</attribute>
+        </xpath>
 
-        <!-- Centro: datos del producto -->
-        <div style="flex: 1;">
-            <div><strong><t t-esc="product.display_name"/></strong></div>
-            <div>Lote: <t t-esc="production_data.get(product.id)"/></div>
-            <div>Dim: <t t-esc="product.product_length"/>×<t t-esc="product.product_width"/>×<t t-esc="product.product_height"/></div>
-        </div>
+        <!-- Reemplaza el div principal que contiene la etiqueta -->
+        <xpath expr="//div[@class='o_label_data']" position="replace">
+            <div class="o_label_data" style="width: 57mm; height: 30mm; padding: 2mm; font-size: 8px; display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 2mm; page-break-after: always;">
+                <!-- Columna izquierda: imágenes -->
+                <div style="display: flex; flex-direction: column; gap: 2mm; width: 14mm;">
+                    <img src="https://raw.githubusercontent.com/AdminDeglia/odoo_product_dimensions_with_product_label/ef2acd906621a4561225df0dd1d235682ca15023/Symbol_Resin_Code_4.svg" alt="Image1" style="width: 12mm; height: auto;"/>
+                    <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/images.jpg?raw=true" alt="Image2" style="width: 12mm; height: auto;"/>
+                    <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/icone-de-recyclage-et-de-durabilite-noir.png?raw=true" alt="Image3" style="width: 12mm; height: auto;"/>
+                </div>
 
-        <!-- Derecha: código de barras y logo -->
-        <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 1mm; width: 28mm;">
-            <t t-if="barcode">
-                <div t-out="barcode" 
-                    t-options="{'widget': 'barcode', 'quiet': 0, 'symbology': 'auto', 'img_style': 'width:15mm;height:10mm'}"></div>
-            </t>
-            <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/Logo_valenciana.png?raw=true" alt="Logo Valenciana" style="width: 12mm; height: 12mm;"/>
-        </div>
-    </div>
-</xpath>
+                <!-- Centro: datos del producto -->
+                <div style="flex: 1; padding-left: 5mm;">
+                    <div><strong><t t-esc="product.display_name"/></strong></div>
+                    <div>Lote: <t t-esc="production_data.get(product.id)"/></div>
+                    <div>Dim: <t t-esc="product.product_length"/>×<t t-esc="product.product_width"/>×<t t-esc="product.product_height"/></div>
+                </div>
 
+                <!-- Derecha: código de barras y logo -->
+                <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 2mm; width: 15mm;">
+                    <t t-if="barcode">
+                        <div t-out="barcode" t-options="{'widget': 'barcode', 'quiet': 0, 'symbology': 'auto', 'img_style': 'width:15mm;height:10mm'}"></div>
+                    </t>
+                    <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/Logo_valenciana.png?raw=true" alt="Logo Valenciana" style="width: 10mm; height: 10mm;"/>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>
