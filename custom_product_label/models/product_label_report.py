@@ -48,7 +48,7 @@ class ProductLabelReportCustom(models.AbstractModel):
         }
 
 class ProductLabelReportDymo(models.AbstractModel):
-    _inherit = 'product.report_producttemplatelabel_dymo'
+    _inherit = 'report.product.report_producttemplatelabel_dymo'
 
     def _get_report_values(self, docids, data):
         return self._prepare_custom_data(self.env, docids, data)
