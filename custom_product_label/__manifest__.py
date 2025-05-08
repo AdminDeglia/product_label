@@ -7,6 +7,8 @@
     'data': [
         'views/my_dymo_template.xml',
         'views/report_action.xml',  
+        'views/report_binding.xml',  
+
     ],
     'installable': True,
     'application': False,
