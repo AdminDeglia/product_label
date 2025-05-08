@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+
+  <!-- Heredamos el template que llama al de la etiqueta -->
+  <template id="custom_productlabel_dymo" inherit_id="product.report_productlabel_dymo">
+    <xpath expr="//t[@t-call='product.report_simple_label_dymo']" position="before">
+      <t t-set="production_data" t-value="production_data"/>
+    </xpath>
+  </template>
+
+  <!-- Reemplazamos el contenido visual de la etiqueta -->
   <template id="custom_label_dymo_extension" inherit_id="product.report_simple_label_dymo">
     <xpath expr="//div[@class='o_label_full']" position="replace">
       <div class="o_label_full" style="width:76mm; height:36mm; padding:2mm; font-size:8.5px; font-family:Arial; display:flex; flex-direction:row; justify-content:space-between; align-items:flex-start; gap:2mm; page-break-after:always;">
@@ -30,4 +39,6 @@
       </div>
     </xpath>
   </template>
+
 </odoo>
+``
