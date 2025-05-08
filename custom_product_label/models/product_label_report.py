@@ -1,25 +1,23 @@
 from odoo import models, api
 
-class ProductLabelReportData(models.AbstractModel):
-    _name = 'report.product.report_productlabel_dymo'
-    _description = 'Reporte de etiquetas DYMO con datos extendidos'
+class ProductTemplateLabelReport(models.AbstractModel):
+    _name = 'report.product.report_producttemplatelabel_dymo'  # ¡ESTE es el nombre correcto!
+    _description = 'Reporte de etiquetas DYMO desde product.template'
 
     @api.model
     def _get_report_values(self, docids, data=None):
-        products = self.env['product.product'].browse(docids)
+        templates = self.env['product.template'].browse(docids)
 
-        # Buscar lote más reciente desde órdenes de fabricación
+        # Crear diccionario con lotes por variante
         production_data = {}
-        for product in products:
-            production = self.env['mrp.production'].search([
-                ('product_id', '=', product.id)
-            ], order='date_start desc', limit=1)
-            production_data[product.id] = production.lot_producing_id.name if production.lot_producing_id else ""
-
-        # La estructura esperada por el template original
-        quantity = {p: [(p.barcode, 1)] for p in products}
+        for template in templates:
+            for variant in template.product_variant_ids:
+                production = self.env['mrp.production'].search([
+                    ('product_id', '=', variant.id)
+                ], order='date_start desc', limit=1)
+                production_data[variant.id] = production.lot_producing_id.name if production.lot_producing_id else ""
 
         return {
-            'quantity': quantity,
+            'docs': templates,
             'production_data': production_data,
         }

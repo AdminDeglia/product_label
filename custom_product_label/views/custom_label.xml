@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-  <!-- Heredamos el template que llama al de la etiqueta -->
-  <template id="custom_productlabel_dymo" inherit_id="product.report_productlabel_dymo">
-    <xpath expr="//t[@t-call='product.report_simple_label_dymo']" position="before">
+  <!-- Herencia del reporte principal: pasamos production_data hacia adentro -->
+  <template id="custom_producttemplatelabel_dymo" inherit_id="product.report_producttemplatelabel_dymo">
+    <xpath expr="//t[@t-call='product.report_productlabel_dymo']" position="before">
       <t t-set="production_data" t-value="production_data"/>
     </xpath>
   </template>
 
-  <!-- Reemplazamos el contenido visual de la etiqueta -->
+  <!-- Heredamos la plantilla final de la etiqueta e inyectamos nuestro diseño -->
   <template id="custom_label_dymo_extension" inherit_id="product.report_simple_label_dymo">
     <xpath expr="//div[@class='o_label_full']" position="replace">
       <div class="o_label_full" style="width:76mm; height:36mm; padding:2mm; font-size:8.5px; font-family:Arial; display:flex; flex-direction:row; justify-content:space-between; align-items:flex-start; gap:2mm; page-break-after:always;">
@@ -23,7 +23,7 @@
         <!-- Centro: datos del producto -->
         <div style="flex:1; padding-left:5mm;">
           <div><strong><t t-esc="product.display_name"/></strong></div>
-          <div>Lote: <t t-esc="production_data.get(product.id)"/></div>
+          <div>Lote: <t t-esc="production_data.get(product.id) if production_data else '-'"/></div>
           <div>Dim: <t t-esc="product.product_length"/>×<t t-esc="product.product_width"/>×<t t-esc="product.product_height"/></div>
           <div>Vol: <t t-esc="product.volume"/></div>
         </div>
