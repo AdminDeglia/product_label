@@ -1,7 +1,7 @@
 from odoo import models, api
 
 class ProductLabelSimpleDymoReport(models.AbstractModel):
-    _name = 'report.product.report_simple_label_dymo'  # este nombre es clave
+    _name = 'report.product.report_productlabel_dymo'  # este nombre es clave
     _description = 'Reporte de etiqueta térmica personalizada'
 
     @api.model
