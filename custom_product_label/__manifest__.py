@@ -5,7 +5,7 @@
     'author': 'Deglia',
     'depends': ['product', 'stock','mrp','product_dimensions'],
     'data': [
-        'views/custom_label.xml',
+        'views/my_dymo_template.xml',
         'views/report_action.xml',  
     ],
     'installable': True,
