@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+  <!-- Nuevo layout para el wizard de impresión -->
+  <record id="layout_dymo_custom_label" model="product.label.layout">
+    <field name="name">Etiqueta térmica personalizada</field>
+    <field name="report_template_id" ref="custom_product_label.my_dymo_template"/>
+    <field name="columns">1</field>
+    <field name="rows">1</field>
+    <field name="width">76.0</field>
+    <field name="height">36.0</field>
+    <field name="default">False</field>
+  </record>
+
+</odoo>
