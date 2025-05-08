@@ -25,6 +25,7 @@
 
         <!-- Centro: datos del producto -->
         <div style="flex:1; padding-left:5mm;">
+          <div>Test: <t t-esc="test_variable"/></div>
           <div><strong><t t-esc="product.display_name"/></strong></div>
           <div>Lote: <t t-esc="production_data.get(product.id)"/></div>
           <div>Dim: <t t-esc="product.product_length"/>×<t t-esc="product.product_width"/>×<t t-esc="product.product_height"/></div>
