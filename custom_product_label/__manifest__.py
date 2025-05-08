@@ -8,10 +8,9 @@
         'views/my_dymo_template.xml',
         'views/report_action.xml',  
         'views/report_binding.xml',
-        'views/label_layout_dymo_custom.xml',
-
     ],
     'installable': True,
     'application': False,
     'license': 'LGPL-3',
 }
+
