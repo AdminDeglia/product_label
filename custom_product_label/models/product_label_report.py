@@ -24,7 +24,7 @@ class ProductTemplateLabelReport(models.AbstractModel):
 
 # Etiqueta desde orden de fabricación (una etiqueta por unidad)
 class MrpProductionLabelReport(models.AbstractModel):
-    _name = 'report.custom_product_label.mrp_dymo_template'
+    _name = 'report.custom_product_label.my_dymo_template'
     _description = 'Etiqueta térmica desde orden de fabricación'
 
     @api.model
