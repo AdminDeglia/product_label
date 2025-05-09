@@ -5,8 +5,7 @@
     'author': 'Deglia',
     'depends': ['product', 'stock','mrp','product_dimensions'],
     'data': [
-        'views/my_dymo_template.xml',
-        'views/report_action.xml',  
+        'views/my_dymo_template.xml',  
         'views/report_binding.xml',
     ],
     'installable': True,
