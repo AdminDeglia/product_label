@@ -2,37 +2,49 @@
 <odoo>
 
   <template id="my_dymo_template">
-    <t t-call="web.basic_layout">
+    <t t-call="web.minimal_layout">
       <t t-set="css">
         @page {
           size: 76mm 36mm;
           margin: 0;
         }
       </t>
+
       <main>
         <t t-foreach="docs" t-as="product">
-          <div style="width:76mm;height:36mm;padding:2mm;font-size:8.5px;font-family:Arial;page-break-after:always;display:flex;flex-direction:row;justify-content:space-between;align-items:flex-start;gap:2mm;">
+          <div style="width:76mm;height:36mm;padding:2mm;font-size:9px;font-family:Arial, sans-serif;display:flex;flex-direction:column;justify-content:space-between;page-break-after:always;box-sizing:border-box;border:1px solid #000;">
 
-            <!-- Columna izquierda: íconos -->
-            <div style="display:flex;flex-direction:column;gap:2mm;width:14mm;">
-              <img src="https://raw.githubusercontent.com/AdminDeglia/odoo_product_dimensions_with_product_label/ef2acd906621a4561225df0dd1d235682ca15023/Symbol_Resin_Code_4.svg" style="width:12mm;height:auto;" />
-              <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/images.jpg?raw=true" style="width:12mm;height:auto;" />
-              <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/icone-de-recyclage-et-de-durabilite-noir.png?raw=true" style="width:12mm;height:auto;" />
+            <!-- Nombre -->
+            <div style="font-weight:bold;font-size:11px;"> <t t-esc="product.display_name"/> </div>
+
+            <!-- Cuerpo principal: íconos + info -->
+            <div style="display:flex;flex:1;flex-direction:row;justify-content:space-between;align-items:flex-start;margin-top:2mm;">
+
+              <!-- Íconos izquierda -->
+              <div style="display:flex;flex-direction:column;gap:2mm;">
+                <img src="https://raw.githubusercontent.com/AdminDeglia/odoo_product_dimensions_with_product_label/ef2acd906621a4561225df0dd1d235682ca15023/Symbol_Resin_Code_4.svg" style="width:10mm;height:auto;" />
+                <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/images.jpg?raw=true" style="width:10mm;height:auto;" />
+                <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/icone-de-recyclage-et-de-durabilite-noir.png?raw=true" style="width:10mm;height:auto;" />
+              </div>
+
+              <!-- Info derecha -->
+              <div style="border:1px solid #000;padding:2mm;width:38mm;">
+                <div>N° Lote: <t t-esc="production_data.get(product.id) if production_data else '-'"/></div>
+                <div>Largo: <t t-esc="product.product_length"/></div>
+                <div>Ancho: <t t-esc="product.product_width"/></div>
+                <div>Alto: <t t-esc="product.product_height"/></div>
+                <div>Volumen: <t t-esc="product.volume"/></div>
+              </div>
+
             </div>
 
-            <!-- Columna central: datos del producto -->
-            <div style="flex:1;padding-left:5mm;">
-              <div><strong><t t-esc="product.display_name"/></strong></div>
-              <div>Lote: <t t-esc="production_data.get(product.id) if production_data else '-'"/></div>
-              <div>Dim: <t t-esc="product.product_length"/>×<t t-esc="product.product_width"/>×<t t-esc="product.product_height"/></div>
-              <div>Vol: <t t-esc="product.volume"/></div>
-            </div>
-
-            <!-- Columna derecha: código de barras y logo -->
-            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:2mm;width:15mm;">
+            <!-- Pie: código + logo -->
+            <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:flex-end;margin-top:1mm;">
+              <!-- Código de barras -->
               <t t-if="product.barcode">
-                <div t-out="product.barcode" t-options="{'widget': 'barcode', 'quiet': 0, 'symbology': 'auto', 'img_style': 'width:15mm;height:10mm'}"></div>
+                <div t-out="product.barcode" t-options="{'widget': 'barcode', 'quiet': 0, 'symbology': 'auto', 'img_style': 'width:22mm;height:10mm'}"></div>
               </t>
+              <!-- Logo -->
               <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/Logo_valenciana.png?raw=true" style="width:10mm;height:10mm;" />
             </div>
 
