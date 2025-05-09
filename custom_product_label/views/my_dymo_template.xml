@@ -2,7 +2,7 @@
 <odoo>
 
   <template id="my_dymo_template">
-    <t t-call="web.minimal_layout">
+    <t t-call="web.basic_layout">
       <t t-set="css">
         @page {
           size: 76mm 36mm;
