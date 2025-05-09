@@ -1,4 +1,4 @@
-ffrom odoo import models, api
+from odoo import models, api
 
 class ProductAndMrpLabelReport(models.AbstractModel):
     _name = 'report.custom_product_label.my_dymo_template'
