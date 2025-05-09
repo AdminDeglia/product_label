@@ -2,7 +2,7 @@
 <odoo>
 
   <template id="my_dymo_template">
-    <t t-call="web.basic_layout">
+    <t t-call="web.html_container">
       <t t-foreach="docs" t-as="product">
         <div style="width:76mm;height:36mm;padding:2mm;font-size:8.5px;font-family:Arial;page-break-after:always;display:flex;flex-direction:row;justify-content:space-between;align-items:flex-start;gap:2mm;">
 
