@@ -2,20 +2,15 @@
 <odoo>
 
   <template id="my_dymo_template">
-    <t t-call="web.minimal_layout">
-      <t t-set="css">
-        @page {
-          size: 76mm 36mm;
-          margin: 0;
-        }
-      </t>
-
+    <t t-call="web.basic_layout">
       <main>
         <t t-foreach="docs" t-as="product">
-          <div style="width:76mm;height:36mm;padding:2mm;font-size:9px;font-family:Arial, sans-serif;display:flex;flex-direction:column;justify-content:space-between;page-break-after:always;box-sizing:border-box;border:1px solid #000;">
+          <div style="width:76mm;height:36mm;padding:2mm;font-size:9px;font-family:Arial, sans-serif;display:flex;flex-direction:column;justify-content:space-between;page-break-after:always;box-sizing:border-box;">
 
             <!-- Nombre -->
-            <div style="font-weight:bold;font-size:11px;"> <t t-esc="product.display_name"/> </div>
+            <div style="font-weight:bold;font-size:11px;">
+              <t t-esc="product.display_name"/>
+            </div>
 
             <!-- Cuerpo principal: íconos + info -->
             <div style="display:flex;flex:1;flex-direction:row;justify-content:space-between;align-items:flex-start;margin-top:2mm;">
