@@ -9,35 +9,39 @@
           margin: 0;
         }
       </t>
-      <t t-foreach="docs" t-as="product">
-        <div style="width:76mm;height:36mm;padding:2mm;font-size:8.5px;font-family:Arial;page-break-after:always;display:flex;flex-direction:row;justify-content:space-between;align-items:flex-start;gap:2mm;">
+      <main>
+        <t t-foreach="docs" t-as="product">
+          <div style="width:76mm;height:36mm;padding:2mm;font-size:8.5px;font-family:Arial;page-break-after:always;display:flex;flex-direction:row;justify-content:space-between;align-items:flex-start;gap:2mm;">
 
-          <!-- Columna izquierda: íconos -->
-          <div style="display:flex;flex-direction:column;gap:2mm;width:14mm;">
-            <img src="https://raw.githubusercontent.com/AdminDeglia/odoo_product_dimensions_with_product_label/ef2acd906621a4561225df0dd1d235682ca15023/Symbol_Resin_Code_4.svg" style="width:12mm;height:auto;" />
-            <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/images.jpg?raw=true" style="width:12mm;height:auto;" />
-            <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/icone-de-recyclage-et-de-durabilite-noir.png?raw=true" style="width:12mm;height:auto;" />
+            <!-- Columna izquierda: íconos -->
+            <div style="display:flex;flex-direction:column;gap:2mm;width:14mm;">
+              <img src="https://raw.githubusercontent.com/AdminDeglia/odoo_product_dimensions_with_product_label/ef2acd906621a4561225df0dd1d235682ca15023/Symbol_Resin_Code_4.svg" style="width:12mm;height:auto;" />
+              <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/images.jpg?raw=true" style="width:12mm;height:auto;" />
+              <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/icone-de-recyclage-et-de-durabilite-noir.png?raw=true" style="width:12mm;height:auto;" />
+            </div>
+
+            <!-- Columna central: datos del producto -->
+            <div style="flex:1;padding-left:5mm;">
+              <div><strong><t t-esc="product.display_name"/></strong></div>
+              <div>Lote: <t t-esc="production_data.get(product.id) if production_data else '-'"/></div>
+              <div>Dim: <t t-esc="product.product_length"/>×<t t-esc="product.product_width"/>×<t t-esc="product.product_height"/></div>
+              <div>Vol: <t t-esc="product.volume"/></div>
+            </div>
+
+            <!-- Columna derecha: código de barras y logo -->
+            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:2mm;width:15mm;">
+              <t t-if="product.barcode">
+                <div t-out="product.barcode" t-options="{'widget': 'barcode', 'quiet': 0, 'symbology': 'auto', 'img_style': 'width:15mm;height:10mm'}"></div>
+              </t>
+              <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/Logo_valenciana.png?raw=true" style="width:10mm;height:10mm;" />
+            </div>
+
           </div>
-
-          <!-- Columna central: datos del producto -->
-          <div style="flex:1;padding-left:5mm;">
-            <div><strong><t t-esc="product.display_name"/></strong></div>
-            <div>Lote: <t t-esc="production_data.get(product.id) if production_data else '-'"/></div>
-            <div>Dim: <t t-esc="product.product_length"/>×<t t-esc="product.product_width"/>×<t t-esc="product.product_height"/></div>
-            <div>Vol: <t t-esc="product.volume"/></div>
-          </div>
-
-          <!-- Columna derecha: código de barras y logo -->
-          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:2mm;width:15mm;">
-            <t t-if="product.barcode">
-              <div t-out="product.barcode" t-options="{'widget': 'barcode', 'quiet': 0, 'symbology': 'auto', 'img_style': 'width:15mm;height:10mm'}"></div>
-            </t>
-            <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/Logo_valenciana.png?raw=true" style="width:10mm;height:10mm;" />
-          </div>
-
-        </div>
-      </t>
+        </t>
+      </main>
     </t>
   </template>
+
+</odoo>
 
 </odoo>
