@@ -7,6 +7,7 @@
     'data': [
         'views/my_dymo_template.xml',  
         'views/report_binding.xml',
+        'views/paperformat.xml',
     ],
     'installable': True,
     'application': False,
