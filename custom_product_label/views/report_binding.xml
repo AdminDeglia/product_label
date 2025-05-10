@@ -18,6 +18,7 @@
     <field name="model">mrp.production</field>
     <field name="report_type">qweb-pdf</field>
     <field name="report_name">custom_product_label.my_dymo_template</field>
+    <field name="paperformat_id" ref="custom_product_label.paperformat_dymo_76x36"/>
     <field name="binding_model_id" ref="mrp.model_mrp_production"/>
     <field name="binding_type">report</field>
     <field name="print_report_name">'Etiqueta - %s' % object.name</field>
