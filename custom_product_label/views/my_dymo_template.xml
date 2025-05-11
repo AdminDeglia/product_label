@@ -21,10 +21,10 @@
               <!-- Datos del producto -->
               <div style="display:flex;flex-direction:column;gap:1mm;flex:1;">
                 <div>N° Lote: <t t-esc="production_data.get(product.id) if production_data else '-'"/></div>
-                <div>Largo: <t t-esc="product.product_length"/></div>
-                <div>Ancho: <t t-esc="product.product_width"/></div>
-                <div>Alto: <t t-esc="product.product_height"/></div>
-                <div>Volumen: <t t-esc="product.volume"/></div>
+                <div>Largo: <t t-esc="product.product_length"/><t t-esc="product.dimensional_uom_id.name"/></div>
+                <div>Ancho: <t t-esc="product.product_width"/><t t-esc="product.dimensional_uom_id.name"/></div>
+                <div>Alto: <t t-esc="product.product_height"/><t t-esc="product.dimensional_uom_id.name"/></div>
+                <div>Volumen: <t t-esc="product.volume"/><t t-esc="product.dimensional_uom_id.name"/></div>
               </div>
             </div>
             
