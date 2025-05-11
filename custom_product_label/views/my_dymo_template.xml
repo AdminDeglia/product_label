@@ -17,7 +17,9 @@
               <img src="https://raw.githubusercontent.com/AdminDeglia/odoo_product_dimensions_with_product_label/ef2acd906621a4561225df0dd1d235682ca15023/Symbol_Resin_Code_4.svg" style="width:10mm;height:auto;"/>
               <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/images.jpg?raw=true" style="width:10mm;height:auto;"/>
               <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/icone-de-recyclage-et-de-durabilite-noir.png?raw=true" style="width:10mm;height:auto;"/>
+              <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/Logo_valenciana.png?raw=true" style="width:10mm;height:auto;margin-left:45mm;"/>
             </div>
+            
             <!-- Info + Imágenes en la misma fila y dentro del cuadro -->
             <div style="border:1px solid #000;padding:2mm;display:flex;flex-direction:row;gap:4mm;align-items:center;margin-top:2mm;justify-content:space-between;">
               
@@ -33,13 +35,8 @@
             </div>
   
             <!-- Pie: código + logo -->
-            <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:flex-end;margin-top:1mm;">
-              <!-- Código de barras -->
-              <t t-if="product.barcode">
+            <div style="display:flex;flex-direction:column;gap:2mm;align-items:center;justify-content:center;margin-top:2mm;">
                 <div t-out="product.barcode" t-options="{'widget': 'barcode', 'quiet': 0, 'symbology': 'auto', 'img_style': 'width:22mm;height:10mm'}"/>
-              </t>
-              <!-- Logo -->
-              <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/Logo_valenciana.png?raw=true" style="width:10mm;height:10mm;"/>
             </div>
   
           </div>
