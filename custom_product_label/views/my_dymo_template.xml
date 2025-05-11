@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-
   <template id="my_dymo_template">
     <t t-call="web.basic_layout">
       <main>
@@ -12,17 +11,13 @@
               <t t-esc="product.display_name"/>
             </div>
   
-              <!-- Íconos centrados -->
-            <div style="display:flex;flex-direction:column;gap:2mm;align-items:center;justify-content:center;margin-top:2mm;">
-              <img src="https://raw.githubusercontent.com/AdminDeglia/odoo_product_dimensions_with_product_label/ef2acd906621a4561225df0dd1d235682ca15023/Symbol_Resin_Code_4.svg" style="width:10mm;height:auto;"/>
-              <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/images.jpg?raw=true" style="width:10mm;height:auto;"/>
-              <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/icone-de-recyclage-et-de-durabilite-noir.png?raw=true" style="width:10mm;height:auto;"/>
-              <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/Logo_valenciana.png?raw=true" style="width:10mm;height:auto;margin-left:45mm;"/>
+            <!-- Imagen alineada completamente a la derecha -->
+            <div style="display:flex;justify-content:flex-end;width:100%;margin-top:2mm;">
+              <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/Logo_valenciana.png?raw=true" style="width:10mm;height:auto;margin-left:76mm;"/>
             </div>
             
             <!-- Info + Imágenes en la misma fila y dentro del cuadro -->
             <div style="border:1px solid #000;padding:2mm;display:flex;flex-direction:row;gap:4mm;align-items:center;margin-top:2mm;justify-content:space-between;">
-              
               <!-- Datos del producto -->
               <div style="display:flex;flex-direction:column;gap:1mm;flex:1;">
                 <div>N° Lote: <t t-esc="production_data.get(product.id) if production_data else '-'"/></div>
@@ -31,18 +26,33 @@
                 <div>Alto: <t t-esc="product.product_height"/></div>
                 <div>Volumen: <t t-esc="product.volume"/></div>
               </div>
-  
             </div>
-  
-            <!-- Pie: código + logo -->
-            <div style="display:flex;flex-direction:column;gap:2mm;align-items:center;justify-content:center;margin-top:2mm;">
-                <div t-out="product.barcode" t-options="{'widget': 'barcode', 'quiet': 0, 'symbology': 'auto', 'img_style': 'width:22mm;height:10mm'}"/>
+            
+            <!-- Código de barras e íconos en la misma fila -->
+            <div style="display:flex;flex-direction:row;gap:2mm;align-items:center;justify-content:center;margin-top:2mm;">
+              
+              <!-- Código de barras primero -->
+              <div style="display:inline-block;">
+                    <t t-if="product.barcode">
+                      <div t-out="product.barcode" 
+                           t-options="{'widget': 'barcode', 'quiet': 0, 'symbology': 'auto', 'img_style': 'width:22mm;height:10mm'}"/>
+                    </t>
+                    <t t-if="not product.barcode">
+                      <!-- Espacio vacío con mismo tamaño -->
+                      <div style="width:22mm;height:2mm;"></div>
+                    </t>
+                    </div>
+            
+              <!-- Tres imágenes después -->
+                <img src="https://raw.githubusercontent.com/AdminDeglia/odoo_product_dimensions_with_product_label/ef2acd906621a4561225df0dd1d235682ca15023/Symbol_Resin_Code_4.svg" style="width:10mm;height:auto;margin-left:32mm;"/>
+                <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/images.jpg?raw=true" style="width:10mm;height:auto;"/>
+                <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/icone-de-recyclage-et-de-durabilite-noir.png?raw=true" style="width:10mm;height:auto;"/>
             </div>
-  
+
           </div>
+          
         </t>
       </main>
     </t>
   </template>
-
 </odoo>
