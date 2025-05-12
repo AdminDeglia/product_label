@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-  <record id="paperformat_dymo_76x36" model="report.paperformat">
-    <field name="name">Etiqueta 76x36</field>
+  <record id="paperformat_dymo_76x76" model="report.paperformat">
+    <field name="name">Etiqueta 76x76</field>
     <field name="default" eval="False"/>
     <field name="format">custom</field>
-    <field name="page_height">36</field> <!-- mm -->
+    <field name="page_height">76</field> <!-- mm -->
     <field name="page_width">76</field>  <!-- mm -->
     <field name="orientation">Portrait</field>
     <field name="margin_top">0</field>
