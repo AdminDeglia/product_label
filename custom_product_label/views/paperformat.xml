@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-  <record id="paperformat_dymo_76x76" model="report.paperformat">
+  <record id="paperformat_dymo_76x36" model="report.paperformat">
     <field name="name">Etiqueta 76x76</field>
     <field name="default" eval="False"/>
     <field name="format">custom</field>
