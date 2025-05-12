@@ -7,12 +7,12 @@
           <div style="font-size:9px;font-family:Arial, sans-serif;display:flex;flex-direction:column;justify-content:space-between;page-break-after:always;box-sizing:border-box;">
   
             <!-- Nombre centrado -->
-            <div style="font-weight:bold;font-size:11px;text-align:center;">
+            <div style="font-weight:bold;font-size:11px;text-align:center;padding-top:2mm;">
               <t t-esc="product.display_name"/>
             </div>
   
             <!-- Imagen alineada completamente a la derecha -->
-            <div style="display:flex;justify-content:flex-end;width:100%;margin-top:2mm;">
+            <div style="display:flex;justify-content:flex-end;width:100%">
               <img src="https://github.com/AdminDeglia/odoo_product_dimensions_with_product_label/blob/17.0/Logo_valenciana.png?raw=true" style="width:10mm;height:auto;margin-left:76mm;"/>
             </div>
             
