@@ -1,9 +1,10 @@
 <odoo>
   <!-- Ocultar etiquetas en módulo de Fabricación -->
-  <record id="mrp.action_report_product_label" model="ir.actions.report">
+  <record model="ir.actions.report" id="mrp_label_production_view_pdf">
     <field name="active" eval="False"/>
   </record>
-  <record id="mrp.action_report_product_label_zpl" model="ir.actions.report">
+
+  <record model="ir.actions.report" id="mrp_label_production_view">
     <field name="active" eval="False"/>
   </record>
 </odoo>
