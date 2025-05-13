@@ -8,7 +8,7 @@
         'views/paperformat.xml',
         'views/my_dymo_template.xml',  
         'views/report_binding.xml',
-        'hide_default_labels.xml',
+        'views/hide_default_labels.xml',
     ],
     'installable': True,
     'application': False,
