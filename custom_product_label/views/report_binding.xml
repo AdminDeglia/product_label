@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
- <!-- Botón en productos -->
-  <record id="action_dymo_custom_label_product" model="ir.actions.report">
-    <field name="name">Etiqueta térmica (Producto)</field>
-    <field name="model">product.template</field>
-    <field name="report_type">qweb-pdf</field>
-    <field name="report_name">custom_product_label.my_dymo_template</field>
-    <field name="binding_model_id" ref="product.model_product_template"/>
-    <field name="binding_type">report</field>
-    <field name="print_report_name">'Etiqueta - %s' % object.name</field>
-  </record>
-
   <!-- Botón en órdenes de fabricación -->
   <record id="action_dymo_custom_label_mrp" model="ir.actions.report">
     <field name="name">Etiqueta de producto terminado</field>
