@@ -28,7 +28,6 @@ class ProductTemplate(models.Model):
         compute="_compute_volume",
         readonly=False,
         store=True,
-        digits=(16, 3),
     )
 
     @api.model
