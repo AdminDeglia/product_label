@@ -32,7 +32,7 @@
               <div><strong>Largo:</strong> <t t-esc="product.product_length"/><t t-esc="product.dimensional_uom_id.name"/></div>
               <div><strong>Ancho:</strong> <t t-esc="product.product_width"/><t t-esc="product.dimensional_uom_id.name"/></div>
               <div><strong>Alto:</strong> <t t-esc="product.product_height"/><t t-esc="product.dimensional_uom_id.name"/></div>
-              <div><strong>Volumen:</strong> <t t-esc="product.volume"/><t t-esc="product.dimensional_uom_id.name"/></div>
+              <div><strong>Volumen:</strong> <t t-esc="product.volume"/> m³</div>
             </div>
           </div>
 
