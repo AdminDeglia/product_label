@@ -1,10 +1,15 @@
 <odoo>
-  <!-- Ocultar etiquetas en módulo de Fabricación -->
-  <record model="ir.actions.report" id="mrp_label_production_view_pdf">
-    <field name="active" eval="False"/>
-  </record>
+  <data noupdate="1">
 
-  <record model="ir.actions.report" id="mrp_label_production_view">
-    <field name="active" eval="False"/>
-  </record>
+    <function model="ir.actions.report" name="search">
+      <value eval="[('report_name','=','mrp_label_production_view_pdf')]"/>
+      <value model="ir.actions.report" eval="[(0, {'active': False})]"/>
+    </function>
+
+    <function model="ir.actions.report" name="search">
+      <value eval="[('report_name','=','mrp_label_production_view')]"/>
+      <value model="ir.actions.report" eval="[(0, {'active': False})]"/>
+    </function>
+
+  </data>
 </odoo>
